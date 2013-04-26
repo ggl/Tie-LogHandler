@@ -1,0 +1,24 @@
+=head1 NAME
+
+Tie::Log::Handler - Tie a filehandle to L<Log::Handler>
+
+=head1 SYNOPSIS
+
+use Tie::LogHandler;
+
+tie *STDOUT, 'Tie::LogHandler', $log, $level;
+
+# this will be logged to the $log object passed at $level
+warn "Darn, an error!";
+
+=head1 DESCRIPTION
+
+The following arguments are to be passed after the class name: a Log::Handler
+object created with Log::Handler->new() and containing at least a log target;
+the loglevel to record messages at.
+
+=head1 BUGS
+
+This module does not safeguard against tying the same file handle that one
+logs to. You should be careful and avoid this.
+
